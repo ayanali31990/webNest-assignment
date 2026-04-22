@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: '29LT Adir';
+  src: url('/fonts/29LT-Adir.woff2') format('woff2');
+}
