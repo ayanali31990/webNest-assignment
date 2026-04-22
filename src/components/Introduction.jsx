@@ -2,8 +2,6 @@ import { useState } from "react";
 import introductionImg from "../assets/introduction.jpg";
 
 export default function Introduction() {
-  const [openItem, setOpenItem] = useState("vision");
-
   const items = [
     {
       id: "vision",
@@ -23,77 +21,71 @@ export default function Introduction() {
   ];
 
   return (
-    <div className="bg-slate-600 text-white font-sans">
-      {/* Top Section: Left text + Right image */}
-      <div className="grid grid-cols-2 gap-0">
+    <div
+      id="about"
+      className="bg-slate-600 text-white font-sans pb-10 md:pb-20"
+    >
+      {/* Top Section */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-0">
         {/* Left Column */}
-        <div className="px-8 pt-10 pb-6 flex flex-col">
-          <h2 className="text-xl font-bold mb-4">Intrduction</h2>
-          <p className="text-xs text-gray-300 leading-relaxed mb-10 max-w-xs">
+        <div className="px-4 sm:px-8 md:pl-14 pt-10 pb-6 flex flex-col">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-4">Intrduction</h2>
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-10 md:mb-40 max-w-xs">
             We are living in a time of rapid urban growth with increasingly busy
-            and fast lifestyles characterized by movement and commotion — so
-            much so that the need to humanize architecture has never been more
+            and fast lifestyles characterized by movement and commotion so much
+            so that the need to humanize architecture has never been more
             important.
           </p>
 
           {/* Accordion Items */}
           <div className="flex flex-col">
-            {items.map((item, idx) => (
+            {items.map((item) => (
               <div key={item.id}>
-                {/* Divider */}
-                <hr className="border-gray-500" />
+                <hr className="border-white" />
                 <div className="py-4">
-                  {/* Title row */}
-                  <div
-                    className="flex items-center justify-between cursor-pointer"
-                    onClick={() =>
-                      setOpenItem(openItem === item.id ? null : item.id)
-                    }
-                  >
-                    <span className="text-sm font-semibold">{item.title}</span>
-                    <div className="w-5 h-5 rounded-full border border-gray-400 flex items-center justify-center text-gray-300 text-xs flex-shrink-0">
-                      {openItem === item.id ? "−" : "+"}
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <span className="text-lg sm:text-2xl font-semibold">
+                      {item.title}
+                    </span>
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gray-400 bg-white text-black flex items-center justify-center text-base sm:text-xl flex-shrink-0">
+                      →
                     </div>
                   </div>
-                  {/* Expandable text */}
-                  {openItem === item.id && (
-                    <p className="text-xs text-gray-300 leading-relaxed mt-3 max-w-xs">
-                      {item.text}
-                    </p>
-                  )}
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed mt-3 max-w-xs">
+                    {item.text}
+                  </p>
                 </div>
               </div>
             ))}
-            <hr className="border-gray-500" />
+            <hr className="border-white" />
           </div>
         </div>
 
-        {/* Right Column — image with gold top border */}
-        <div className="relative">
-          {/* Gold top bar */}
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-amber-500 z-10" />
+        {/* Right Column — image */}
+        <div className="relative mt-6 md:mt-20 px-4 sm:px-0">
+          {/* <div className="absolute top-0 left-0 right-0 h-4 md:h-6 bg-amber-500 z-10" /> */}
           <img
             src={introductionImg}
             alt="Interior Architecture"
             className="w-full object-cover"
-            style={{ height: "100%", minHeight: "420px" }}
+            style={{ height: "600px", maxWidth: "600px" }}
           />
         </div>
       </div>
 
-      {/* Divider row with label and page number */}
-      <div className="px-8 py-3 flex items-center justify-between">
-        <span className="text-xs text-gray-400">Our Success</span>
-        <span className="text-xs text-gray-400">01/05</span>
+      {/* Our Success row */}
+      <div className="px-4 sm:px-8 py-3 flex items-center justify-between">
+        <span className="text-base sm:text-xl text-white">Our Success</span>
+        <span className="text-base sm:text-xl text-white">01/03</span>
       </div>
-      <div className="px-8">
-        <hr className="border-gray-500" />
+      <div className="px-4 sm:px-8">
+        <hr className="border-white" />
       </div>
 
-      {/* Bottom large paragraph + Next button */}
-      <div className="px-8 py-8 grid grid-cols-12 gap-4 items-end">
-        <div className="col-span-10">
-          <p className="text-sm text-gray-200 leading-relaxed">
+      {/* Bottom paragraph + Next button */}
+      <div className="px-4 sm:px-8 py-8 flex flex-col md:grid md:grid-cols-12 gap-4 items-end">
+        <div className="md:col-span-10">
+          <p className="text-base sm:text-xl md:text-2xl w-2/3 text-gray-200 leading-relaxed">
             We are living in a time of rapid urban growth with increasingly busy
             and fast lifestyles characterized by movement and commotion – so
             much so that the need to humanize architecture has never been more
@@ -109,16 +101,16 @@ export default function Introduction() {
         </div>
 
         {/* Next button */}
-        <div className="col-span-2 flex justify-end">
-          <div className="w-16 h-16 rounded-full border border-gray-400 flex items-center justify-center cursor-pointer hover:border-amber-500 hover:text-amber-400 transition-all">
-            <span className="text-xs font-medium">Next</span>
+        <div className="md:col-span-2 flex justify-start md:justify-end mt-4 md:mt-0">
+          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-full border border-amber-400 flex items-center justify-center cursor-pointer hover:border-amber-500 hover:text-amber-400 transition-all">
+            <span className="text-base sm:text-xl font-medium">Next</span>
           </div>
         </div>
       </div>
 
       {/* Bottom divider */}
-      <div className="px-8">
-        <hr className="border-gray-500" />
+      <div className="px-4 sm:px-8">
+        <hr className="border-white" />
       </div>
       <div className="py-4" />
     </div>
